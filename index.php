@@ -30,7 +30,6 @@ require_once 'app/config.php';
     <body class="bg-light">
 
         <div class="container-fluid py-3">
-
             <div class="row mb-5">
                 <div class="col-xl-12">
                     <div class="encabezado">
@@ -44,7 +43,7 @@ require_once 'app/config.php';
                 <div class="col-xl-4">
                     <div class="row">
                         <div class="col-xl-12">
-                        <div class="card">
+                            <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Agregar nuevo concepto</h4>
 

@@ -59,8 +59,8 @@ switch ($action) {
         $total = 0;
 
         $output = 
-        '<div class="card">
-        <div class="card-body">
+            '<div class="card">
+            <div class="card-body">
             <h4 class="card-title">Conceptos actuales</h4>
 
             <table class="table table-hover table-striped">

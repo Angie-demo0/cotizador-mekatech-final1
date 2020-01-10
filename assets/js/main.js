@@ -2,6 +2,7 @@ $(document).ready(function() {
     //Agregar concepto
     $('#do_add_concept').on('submit', function(e) {
         e.preventDefault();
+        e.stopImmediatePropagation();
         var concepto,
             precio,
             cantidad;
@@ -41,6 +42,7 @@ $(document).ready(function() {
 
     //Cargar conceptos
     function load_conceptos() {
+
         var wrapper = $('#wrapper-cotizacion');
         action = 'get_conceptos';
         $
@@ -71,14 +73,15 @@ $(document).ready(function() {
     //Borrar concepto
     $('body').on('click', '.do_delete_concepto', function(e) {
 
+        e.stopImmediatePropagation();
+
         if (!confirm('¿Estás seguro?'))
             return false;
 
         var id = $(this).data('id'),
             action = 'delete_concepto';
 
-        $
-            .ajax({
+        $.ajax({
                 url: 'app/ajax.php',
                 type: 'POST',
                 dataType: 'JSON',
@@ -109,7 +112,8 @@ $(document).ready(function() {
         action = 'get_concepto';
         wrapper = $('#wrapper-form');
 
-        $.ajax({
+        $
+            .ajax({
                 url: 'app/ajax.php',
                 type: 'POST',
                 dataType: 'JSON',
@@ -118,9 +122,7 @@ $(document).ready(function() {
                     action
                 },
 
-                beforeSend: function() {
-
-                }
+                beforeSend: function() {}
             })
             .done(function(res) {
                 if (res.status === 200) {
@@ -129,15 +131,11 @@ $(document).ready(function() {
                     alert(res.msg);
                 }
             })
-
-        .always(function() {
-
-            })
+            .always(function() {})
             .fail(function(err) {
                 alert('Entrando a fail...');
             });
     });
-
 
     $('body').on('click', '#cancel-update', function(e) {
         e.preventDefault();
@@ -147,16 +145,18 @@ $(document).ready(function() {
     });
 
     //Guardar cambios del concepto -edicion
-    
+
     $('body').on('submit', '#do_update_concepto', function(e) {
         e.preventDefault();
+        e.stopImmediatePropagation();
         var id = $('#update_id').val(),
-        concepto = $('#update_concepto').val(),
-        precio = $('#update_precio').val(),
-        cantidad = $('#update_cantidad').val(),
-        action = 'update_concepto';
+            concepto = $('#update_concepto').val(),
+            precio = $('#update_precio').val(),
+            cantidad = $('#update_cantidad').val(),
+            action = 'update_concepto';
 
-        $.ajax({
+        $
+            .ajax({
                 url: 'app/ajax.php',
                 type: 'POST',
                 dataType: 'JSON',
@@ -171,7 +171,7 @@ $(document).ready(function() {
             })
             .done(function(res) {
                 if (res.status === 200) {
-                    $('#wrapper-update-concepto-form').fadeOut(function(){
+                    $('#wrapper-update-concepto-form').fadeOut(function() {
                         $(this).remove();
                     });
                     alert(res.msg);
@@ -180,12 +180,8 @@ $(document).ready(function() {
                     alert(res.msg);
                 }
             })
-            .always(function() {
-
-            })
-            .fail(function(err) {
-                
-            });
-    });  
+            .always(function() {})
+            .fail(function(err) {});
+    });
 
 });
