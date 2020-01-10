@@ -1,0 +1,11 @@
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+/*------ESPACIO ENTRE TITULO Y FORMULARIO------*/
+.mb-5, .my-5 {
+    margin-bottom: 1rem !important;
+}
